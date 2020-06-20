@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <title>MaiqBOT!</title>
+    <style>
+      body{
+        color: #421; font-weight: bold; font-size: 20px; background: skyblue; background-image: url("img5.jpeg"); background-repeat: repeat-y;
+      }
+      span {
+        color: red;
+      }
+      ::-webkit-input-placeholder{
+        color:#421;
+      }
+      #main {
+        position: fixed; top: 40%; right: 60px; width: 400px; border: 0px solid #421; padding: 40px;
+      }
+      #main div{
+        margin: 10px;
+      }
+      #input{
+        border: 0; background: #EBE547; padding: 5px; border: 1px solid #421;
+      }
+
+      .maiq{
+        margin-left: 660px;
+        margin-top: 30px;
+      }
+
+    </style>
+    <section class="maiq">
+      <h2>WELCOME!</h2>
+      <p>Hey there!, I'm MaiqBOT!, Your Friendly neighbourhood Bot<br>here to keep you updated on all the latest Covid19 news in Nigeria!</p>
+      <p>If you're not up for that, We could always have a nice, friendly conversation<br> and hey!, I'm also here if you have any mathematical problems that need<br> solving!...Just in case:)</p>
+      <p>To get started simply say Hello!</p>
+    </section>
+  </head>
+  <body>
+    <div id="main">
+      <div>user: <span id="user"></span></div>
+      <div>MaiqBOT: <span id="MaiqBOT"></span></div>
+      <div><input id="input" type="text" placeholder="Say anything..." autocomplete="off"/></div>
+    </div>
+    <script type="text/javascript">
+    var trigger = [
+      ["hi"],
+      ["hello"],
+      ["covid", "covik", "covid19", "corona", "virus", "coronavirus"],
+      ["update", "updates", "updated"],
+      ["states", "state"],
+      ["lagos cases", "lagoscases"],
+      ["abuja cases", "abujacases", "fct cases", "fct cases"],
+      ["kano cases", "kano,cases"],
+      ["oyo cases", "oyocases"],
+      ["edo cases", "edocases"],
+      ["rivers", "riverscases"],
+      ["ogun cases", "oguncases"],
+      ["kaduna cases", "kadunacases"],
+      ["borno cases", "bornocases"],
+      ["gombe cases", "gombecases"],
+      ["bauchi cases", "bauchicases"],
+      ["katsina cases", "katsinacases"],
+      ["delta cases", "deltacases"],
+      ["jigawa cases", "jigawacases"],
+      ["ebonyi cases", "ebonyicases"],
+      ["abia cases", "ebonyicases"],
+      ["plateau cases", "plateaucases"],
+      ["imo cases", "imocases"],
+      ["nasarawa cases", "nasarawacases"],
+      ["kwara cases", "kwaracases"],
+      ["sokoto cases", "sokotocases"],
+      ["bayelsa cases", "bayelsacases"],
+      ["ondo cases", "ondocases"],
+      ["enugu cases", "enugucases"],
+      ["zamfara cases", "zamfaracases"],
+      ["kebbi cases", "kebbicases"],
+      ["anambra cases", "anambracases"],
+      ["niger cases", "nigercases"],
+      ["akwa ibom cases", "akwaibomcases", "akwa ibomcases", "akwaibom cases"],
+      ["yobe cases", "yobecases"],
+      ["osun cases", "osuncases"],
+      ["adamawa cases", "adamawacases"],
+      ["benue cases", "benuecases"],
+      ["ekiti cases", "ekiticases"],
+      ["taraba cases", "tarabacases"],
+      ["kogi cases", "kogicases"],
+      ["symptoms"]
+    ];
+    var reply = [
+      ["Hi", "Hey", "Hello", "Hey There!", "Hello!, How do you do?"],
+      ["Hey! To know more about covid19 in Nigeria type 'Covid'"],
+      ["Hi!  for updates on the latest number of cases, type 'update',  to know the symptoms of Covid19, type 'symptoms',  for prevention techniques, type 'prevention',  for NCDC hotlines, type 'hotlines'"],
+      ["As of today, 19/06/2020, there 19147 confirmed cases of covid19 in Nigeria, with 6581 people discharged and sadly, 487 deaths. To know the number of cases per state, type 'states'."],
+      ["To know the number of cases in a particular state, Type the name of the state followed by cases!. For example, 'abuja cases' "],
+      ["a"],
+      ["1489"],
+      ["1182"],
+      ["809"],
+      ["748"],
+      ["739"],
+      ["623"],
+      ["527"],
+      ["465"],
+      ["451"],
+      ["447"],
+      ["426"],
+      ["418"],
+      ["317"],
+      ["234"],
+      ["221"],
+      ["207"],
+      ["205"],
+      ["181"],
+      ["180"],
+      ["135"],
+      ["128"],
+      ["128"],
+      ["126"],
+      ["76"],
+      ["67"],
+      ["66"],
+      ["66"],
+      ["65"],
+      ["56"],
+      ["54"],
+      ["42"],
+      ["39"],
+      ["32"],
+      ["18"],
+      ["3"]
+    ];
+    var alternative = ["uhmm.... This is awkward...try typing hello to begin!"]
+      document.querySelector("#input").addEventListener("keypress", function(e){
+        var key = e.which || e.KeyCode;
+        if(key === 13){
+          var input = document.getElementById("input").value;
+          document.getElementById("user").innerHTML = input;
+          output(input);
+        }
+      });
+      function output(input) {
+        try{
+           var product = input + "=" + eval(input);
+        } catch(e){
+          var text = (input.toLowerCase()).replace(/[^\w\s\d]/gi, "");
+          text = text.replace(/ a /g, " ");
+          if(compare(trigger, reply, text)){
+            var product = compare(trigger, reply, text)
+          } else{
+              var product = alternative[Math.floor(Math.random()*alternative.length)];
+          }
+      }
+        document.getElementById("MaiqBOT").innerHTML = product;
+        document.getElementById("input").value = "";
+      }
+      function compare(arr, array, string) {
+        var item;
+        for(var x=0; x<arr.length; x++){
+          for(var y=0; y<array.length; y++){
+            if(arr[x][y] == string){
+              items = array[x];
+              item = items[Math.floor(Math.random()*items.length)];
+            }
+          }
+        }
+        return item;
+      }
+    </script>
+  </body>
+</html>
